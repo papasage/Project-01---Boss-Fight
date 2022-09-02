@@ -36,6 +36,7 @@ public class TankController : MonoBehaviour
 
     public void TurnTurret()
     {
-
+        Vector3 mousePos = Input.mousePosition;
+        //rbTurret.transform.LookAt(mousePos);
     }
 }

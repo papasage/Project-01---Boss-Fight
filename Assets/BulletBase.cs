@@ -6,6 +6,10 @@ public class BulletBase : MonoBehaviour
 {
     Rigidbody rb = null;
     [SerializeField] protected float travelSpeed = .25f;
+    [SerializeField] ParticleSystem shootParticle;
+    [SerializeField] ParticleSystem impactParticle;
+    [SerializeField] AudioClip shootSFX;
+    [SerializeField] AudioClip impactSFX;
     //[SerializeField] LayerMask Killable;
 
     private void Awake()

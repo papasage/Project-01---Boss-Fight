@@ -6,8 +6,7 @@ public class BulletBase : MonoBehaviour
 {
     Rigidbody rb = null;
     [SerializeField] protected float travelSpeed = .25f;
-    [SerializeField] ParticleSystem shootParticle;
-    [SerializeField] ParticleSystem impactParticle;
+    [SerializeField] GameObject explosionPrefab;
     [SerializeField] AudioClip shootSFX;
     [SerializeField] AudioClip impactSFX;
     //[SerializeField] LayerMask Killable;
@@ -16,6 +15,7 @@ public class BulletBase : MonoBehaviour
     {
         Debug.Log("Bullet Spawn!");
         rb = GetComponent<Rigidbody>();
+
     }
 
     private void FixedUpdate()
@@ -33,7 +33,9 @@ public class BulletBase : MonoBehaviour
     {
         Debug.Log("Bullet Collision!");
         //TODO APPLY DAMAGE HERE
-      
+        Vector3 currentLocation = gameObject.transform.position;
+        Instantiate(explosionPrefab,currentLocation,Quaternion.identity);
+
         if(col.gameObject.layer == LayerMask.NameToLayer("Killable"))
         {
             Destroy(col.gameObject); 

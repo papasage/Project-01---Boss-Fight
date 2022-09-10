@@ -40,7 +40,8 @@ public class BulletBase : MonoBehaviour
         {
             Destroy(col.gameObject); 
         }
-        
-        gameObject.SetActive(false);
+
+        Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
 }

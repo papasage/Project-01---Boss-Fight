@@ -25,6 +25,7 @@ public class TankController : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             Debug.Log("FIRE!");
+            FindObjectOfType<AudioManager>().Play("projectile_fire");
             Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
         }
     }

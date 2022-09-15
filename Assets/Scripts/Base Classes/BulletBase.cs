@@ -6,6 +6,7 @@ public class BulletBase : MonoBehaviour
 {
     Rigidbody rb = null;
     [SerializeField] protected float travelSpeed = .25f;
+    [SerializeField] protected int damage = 25;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] AudioClip shootSFX;
     [SerializeField] AudioClip impactSFX;
@@ -32,16 +33,19 @@ public class BulletBase : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         Debug.Log("Bullet Collision!");
-        //TODO APPLY DAMAGE HERE
+
+        //check if the collided object has a IDamageable component
+        IDamageable damageable = col.GetComponent<IDamageable>();
+        //if it does, apply this bullet's damage rating
+        if (damageable != null) { damageable.takeDamage(damage);}
+
+        //Store this location for a particle object
         Vector3 currentLocation = gameObject.transform.position;
+
+        //Spawn impact particle object on location
         Instantiate(explosionPrefab,currentLocation,Quaternion.identity);
 
-        if(col.gameObject.layer == LayerMask.NameToLayer("Killable"))
-        {
-            Destroy(col.gameObject); 
-        }
-
+        //Bullet is Detroyed
         Destroy(gameObject);
-        //gameObject.SetActive(false);
     }
 }

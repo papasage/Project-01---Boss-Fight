@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class particleExplostion : MonoBehaviour
 {
-    private float alarm = 60;
+    private float alarm = 240;
     private float timer = 0;
+    [SerializeField] string soundFileName;
 
     private void Awake()
     {
-        FindObjectOfType<AudioManager>().Play("projectile_impact");
+        FindObjectOfType<AudioManager>().Play(soundFileName);
     }
 
     void LateUpdate()

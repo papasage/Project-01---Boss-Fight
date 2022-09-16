@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class particleExplostion : MonoBehaviour
 {
-    private float alarm = 240;
+    [SerializeField] private float alarm = 600;
     private float timer = 0;
     [SerializeField] string soundFileName;
 

@@ -1946,6 +1946,7 @@ GameObject:
   - component: {fileID: 409725186}
   - component: {fileID: 409725185}
   - component: {fileID: 409725189}
+  - component: {fileID: 409725190}
   m_Layer: 0
   m_Name: BOSS
   m_TagString: Untagged
@@ -2036,6 +2037,33 @@ MonoBehaviour:
   currentHealth: 1
   deathPrefab: {fileID: 2111759047367573566, guid: 2c92a435bf5b55746a626499a8741f5c, type: 3}
   deathPrefabLocation: {fileID: 578181339}
+--- !u!114 &409725190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409725184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f076367f7871a0f4db9d2dced0f18ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - material: {fileID: 2100000, guid: 16a52d52e14070f459e5da944501d65a, type: 2}
+    startColor: {r: 0, g: 0, b: 0, a: 0}
+  - material: {fileID: 2100000, guid: 16a52d52e14070f459e5da944501d65a, type: 2}
+    startColor: {r: 0, g: 0, b: 0, a: 0}
+  - material: {fileID: 2100000, guid: 73ab8d2c74a549d43b95bffca864e8b7, type: 2}
+    startColor: {r: 0.6792453, g: 0.041651852, b: 0.060294863, a: 1}
+  - material: {fileID: 2100000, guid: 16a52d52e14070f459e5da944501d65a, type: 2}
+    startColor: {r: 0.509434, g: 0.021626905, b: 0.091941394, a: 1}
+  - material: {fileID: 2100000, guid: 52546139c72195c49892cee84dca6bc2, type: 2}
+    startColor: {r: 0, g: 0, b: 0, a: 0}
+  - material: {fileID: 2100000, guid: 1508fac4ac934994b9ba1307d665202c, type: 2}
+    startColor: {r: 0, g: 0, b: 0, a: 0}
+  targetColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
+  lerpSpeed: 3
 --- !u!1 &517264257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,7 +6661,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ec6562c54c48a104c9be11ea56c72433, type: 2}
+  - {fileID: 2100000, guid: 52546139c72195c49892cee84dca6bc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8274,7 +8302,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96482104d486f914282e3dc1eaf30128, type: 2}
+  - {fileID: 2100000, guid: 1508fac4ac934994b9ba1307d665202c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9612,7 +9640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96482104d486f914282e3dc1eaf30128, type: 2}
+  - {fileID: 2100000, guid: 1508fac4ac934994b9ba1307d665202c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9890,6 +9918,7 @@ GameObject:
   - component: {fileID: 1613985370}
   - component: {fileID: 1613985369}
   - component: {fileID: 1613985368}
+  - component: {fileID: 1613985372}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -9964,6 +9993,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1613985372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613985367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f076367f7871a0f4db9d2dced0f18ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - material: {fileID: 2100000, guid: 36ff0cdfc4f1a34429e7796742a81d33, type: 2}
+    startColor: {r: 0.018378438, g: 0.5566038, b: 0.04574587, a: 1}
+  - material: {fileID: 2100000, guid: 4555af4bea507dd42a376dbfa84f1073, type: 2}
+    startColor: {r: 0.07079922, g: 0.3490566, b: 0.09457138, a: 1}
+  - material: {fileID: 2100000, guid: ec6562c54c48a104c9be11ea56c72433, type: 2}
+    startColor: {r: 0, g: 0, b: 0, a: 0}
+  - material: {fileID: 2100000, guid: 96482104d486f914282e3dc1eaf30128, type: 2}
+    startColor: {r: 0, g: 0, b: 0, a: 0}
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  lerpSpeed: 3
 --- !u!43 &1650098714
 Mesh:
   m_ObjectHideFlags: 0

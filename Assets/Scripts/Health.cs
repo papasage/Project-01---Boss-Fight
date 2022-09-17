@@ -8,9 +8,11 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] int currentHealth;
     [SerializeField] GameObject deathPrefab;
     [SerializeField] GameObject deathPrefabLocation;
+    [SerializeField] ColorLerper damageColors;
 
     public void takeDamage(int amount)
     {
+        damageColors.setLerp();
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
@@ -32,6 +34,7 @@ public class Health : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealth = maxHealth;
+        damageColors = GetComponent<ColorLerper>();
     }
 
   

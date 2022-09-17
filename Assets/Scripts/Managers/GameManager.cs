@@ -7,13 +7,13 @@ public class GameManager : MonoBehaviour
 {
     void Update()
     {
-     if (Input.GetKey(KeyCode.Backspace))
+     if (Input.GetKeyDown(KeyCode.Backspace))
         {
             Debug.Log("Scene Reset!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-     if (Input.GetKey(KeyCode.Escape))
+     if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Game Closed");
             Application.Quit();

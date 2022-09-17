@@ -2037,6 +2037,7 @@ MonoBehaviour:
   currentHealth: 1
   deathPrefab: {fileID: 2111759047367573566, guid: 2c92a435bf5b55746a626499a8741f5c, type: 3}
   deathPrefabLocation: {fileID: 578181339}
+  damageColors: {fileID: 0}
 --- !u!114 &409725190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2051,9 +2052,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materials:
   - material: {fileID: 2100000, guid: 16a52d52e14070f459e5da944501d65a, type: 2}
-    startColor: {r: 0, g: 0, b: 0, a: 0}
+    startColor: {r: 0.50980395, g: 0.023529414, b: 0.09019608, a: 1}
   - material: {fileID: 2100000, guid: 16a52d52e14070f459e5da944501d65a, type: 2}
-    startColor: {r: 0, g: 0, b: 0, a: 0}
+    startColor: {r: 0.50980395, g: 0.023529414, b: 0.09019608, a: 1}
   - material: {fileID: 2100000, guid: 73ab8d2c74a549d43b95bffca864e8b7, type: 2}
     startColor: {r: 0.6792453, g: 0.041651852, b: 0.060294863, a: 1}
   - material: {fileID: 2100000, guid: 16a52d52e14070f459e5da944501d65a, type: 2}
@@ -2062,8 +2063,10 @@ MonoBehaviour:
     startColor: {r: 0, g: 0, b: 0, a: 0}
   - material: {fileID: 2100000, guid: 1508fac4ac934994b9ba1307d665202c, type: 2}
     startColor: {r: 0, g: 0, b: 0, a: 0}
-  targetColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
-  lerpSpeed: 3
+  targetColor: {r: 1, g: 1, b: 1, a: 1}
+  lerpSpeed: 9.05
+  lerpTime: 0
+  tTarget: 0.95
 --- !u!1 &517264257
 GameObject:
   m_ObjectHideFlags: 0
@@ -10015,7 +10018,9 @@ MonoBehaviour:
   - material: {fileID: 2100000, guid: 96482104d486f914282e3dc1eaf30128, type: 2}
     startColor: {r: 0, g: 0, b: 0, a: 0}
   targetColor: {r: 1, g: 0, b: 0, a: 1}
-  lerpSpeed: 3
+  lerpSpeed: 9.05
+  lerpTime: 0
+  tTarget: 0.95
 --- !u!43 &1650098714
 Mesh:
   m_ObjectHideFlags: 0

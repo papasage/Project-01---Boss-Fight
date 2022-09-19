@@ -10052,7 +10052,7 @@ MonoBehaviour:
   rbTurret: {fileID: 517264258}
   cam: {fileID: 963194227}
   cannonAimer: {fileID: 1703334569}
-  mousePosZ: 14.8
+  mousePosZ: 100
 --- !u!43 &1650098714
 Mesh:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class TankController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log("FIRE!");
             FindObjectOfType<AudioManager>().Play("projectile_fire");

@@ -7,44 +7,36 @@ public class AimTurret : MonoBehaviour
     [SerializeField] Rigidbody rbTurret;
     [SerializeField] Camera cam;
     [SerializeField] Transform cannonAimer;
-    [SerializeField] float mousePosZ = 100f;
-    Ray ray;
-    Vector3 mousePos;
-    RaycastHit hit;
-    //While Yellow and Green are pointing in the same location, they are hitting the floor in different locations because the mousePos is not limited on the y transform
 
-    void Update()
+    void FixedUpdate()
     {
         RaycastMouse();
-
-        
     }
-    void TurnTurret(Vector3 _hit)
-    {
-        Vector3 dir = new Vector3(_hit.x, cannonAimer.position.y, _hit.z);
-
-        Debug.DrawRay(cam.transform.position, dir - cam.transform.position, Color.green);      //GREEN Raycast is Pointing from camera plane to the mouse 
-
-        rbTurret.transform.LookAt(dir);
-    }
-
+  
     void RaycastMouse()
     {
-        
-        ray = cam.ScreenPointToRay(Input.mousePosition);
+        // set a ray to shoot from the mouse
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
+        //check to see if that ray calls true
         if(Physics.Raycast(ray, out hit))
         {
             Debug.DrawLine(ray.origin, hit.point);
+
+            //feed the "hit" transform into the TurnTurret function
             TurnTurret(hit.point);
         }
-
-
     }
+    void TurnTurret(Vector3 _hit)
+    {
+        //establish the direction the cannon should turn to be facing the ray's hit
+        Vector3 dir = new Vector3(_hit.x, cannonAimer.position.y, _hit.z);
 
-
-    //TO DO HERE. 9/18/2022 7pm
-    //The cannon is not 100% accurate
-    //the fire point is looking out at the direction of the end of mousePos. I need it to look at the transform that is stored when mousePos is a Physics.raycast
+        //GREEN Raycast is Pointing from camera plane to the mouse
+        Debug.DrawRay(cam.transform.position, dir - cam.transform.position, Color.green);
+        
+        //Look in that direction!
+        rbTurret.transform.LookAt(dir);
+    }
 }

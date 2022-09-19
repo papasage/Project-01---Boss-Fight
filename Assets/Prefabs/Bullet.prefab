@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   travelSpeed: 0.25
-  damage: 25
+  damage: 1
   explosionPrefab: {fileID: 2111759047367573566, guid: 0f3a2e8d6e312e443853644d2920392e, type: 3}
   shootSFX: {fileID: 0}
   impactSFX: {fileID: 0}

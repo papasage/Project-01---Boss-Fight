@@ -5,7 +5,6 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     [SerializeField] Rigidbody rbMain = null;
-    [SerializeField] Rigidbody rbTurret = null;
 
     [SerializeField] float maxSpeed = .25f;
     [SerializeField] float turnSpeed = 2f;
@@ -17,7 +16,7 @@ public class TankController : MonoBehaviour
     {
         MoveTank();
         TurnTank();
-        TurnTurret();
+        
     }
 
     private void Update()
@@ -47,9 +46,4 @@ public class TankController : MonoBehaviour
 
     }
 
-    public void TurnTurret()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        //rbTurret.transform.LookAt(mousePos);
-    }
 }

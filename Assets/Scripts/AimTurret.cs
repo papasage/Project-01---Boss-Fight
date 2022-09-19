@@ -7,6 +7,9 @@ public class AimTurret : MonoBehaviour
     [SerializeField] Rigidbody rbTurret;
     [SerializeField] Camera cam;
     [SerializeField] Transform cannonAimer;
+    [SerializeField] GameObject crosshair;
+    [SerializeField] float crosshairSpeed;
+    [SerializeField] float adjustedCrosshairSpeed;
 
     void FixedUpdate()
     {
@@ -16,16 +19,16 @@ public class AimTurret : MonoBehaviour
     void RaycastMouse()
     {
         // set a ray to shoot from the mouse
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        
-        //check to see if that ray calls true
-        if(Physics.Raycast(ray, out hit))
-        {
-            Debug.DrawLine(ray.origin, hit.point);
+        Ray mouseRay = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit mouseHit;
 
-            //feed the "hit" transform into the TurnTurret function
-            TurnTurret(hit.point);
+        //check to see if that ray calls true
+        if(Physics.Raycast(mouseRay, out mouseHit))
+        {
+            Debug.DrawLine(mouseRay.origin, mouseHit.point);
+            //feed the "hit" transform into the TurnTurret/Crosshair functions
+            TurnTurret(mouseHit.point);
+            //MoveCrosshair(mouseHit.point);
         }
     }
     void TurnTurret(Vector3 _hit)
@@ -38,5 +41,21 @@ public class AimTurret : MonoBehaviour
         
         //Look in that direction!
         rbTurret.transform.LookAt(dir);
+    }
+
+    void MoveCrosshair(Vector3 _hit)
+    {
+        Vector3 crossDir = new Vector3(_hit.x, cannonAimer.position.y, _hit.z);
+
+        Ray playerToMouse = new Ray(cannonAimer.position, crossDir);
+
+        RaycastHit distanceCheckHit;
+
+        if (Physics.Raycast(playerToMouse, out distanceCheckHit))
+        {
+            adjustedCrosshairSpeed = crosshairSpeed - distanceCheckHit.distance;
+            //set a visual object's transform to hit.point
+            crosshair.transform.position = Vector3.MoveTowards(crosshair.transform.position, crossDir, adjustedCrosshairSpeed);
+        }
     }
 }

@@ -4,49 +4,40 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
-    [SerializeField] Rigidbody rbTurret;
-    [SerializeField] Camera cam;
-    [SerializeField] Transform cannonAimer;
-    [SerializeField] Transform playerTarget;
+    [SerializeField] Rigidbody rbTurret; // The Rigidbody we will turn to make the Boss aim
+    [SerializeField] Transform cannonAimer; // This is the transform that pulls the aiming in the player's direction
+    [SerializeField] Transform playerTarget; // The player is the target
 
-    [SerializeField] GameObject bullet;
-    [SerializeField] GameObject firepoint;
+    [SerializeField] GameObject bullet; // The bullets this boss will fire
+    [SerializeField] GameObject firepoint; // Where those bullets instantiate from
 
-    [SerializeField] Transform rightStopper;
-    [SerializeField] Transform leftStopper;
+    // bools to check if the boss should be sliding left/right on the track
+    [SerializeField] bool movingLeft = false;
+    [SerializeField] bool movingRight = true;
 
-    [SerializeField] Vector3 velocity = Vector3.zero;
-    [SerializeField] float smoothTime = 0.3f;
-
-    bool movingLeft = false;
-    bool movingRight = true;
+    //variables that control the fire intervals
+    float shotTimer = 0;
+    bool fireAgain = false;
+    [SerializeField] float coolDownSeconds = 1;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Shoot();
-        }
+        AutoFire(coolDownSeconds);
     }
 
     void FixedUpdate()
     {
         TurnTurret();
-
         //below are methods that I will eventually move to a state-controlled system
         if (movingRight == true)
         {
             MoveRight();
-        }
-        
+        }    
         if (movingLeft == true)
         {
             MoveLeft();
-        }
-        
+        }  
     }
-
-
 
     // _________________METHODS__________
     void TurnTurret()
@@ -60,14 +51,29 @@ public class BossBehavior : MonoBehaviour
         //Look in that direction!
         rbTurret.transform.LookAt(dir);
     }
-
     void Shoot()
     {
         Debug.Log("FIRE!");
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
     }
+    void AutoFire(float _coolDown)
+    {
+        if (!fireAgain)
+        {
+            //GUN COOLDOWN
+            shotTimer += Time.deltaTime;
 
+            //FIRE AT THE END OF THE COOLDOWN AND RESET
+            if (shotTimer >= _coolDown)
+            {
+                fireAgain = true;
+                Shoot();
+                shotTimer = 0;
+                fireAgain = false;
+            }
+        }
+    }
     void MoveRight()
     {
 

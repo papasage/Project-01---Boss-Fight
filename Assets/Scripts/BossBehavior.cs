@@ -42,14 +42,16 @@ public class BossBehavior : MonoBehaviour
     // _________________METHODS__________
     void TurnTurret()
     {
-        //establish the direction the cannon should turn to be facing the ray's hit
-        Vector3 dir = new Vector3(playerTarget.position.x, cannonAimer.position.y, playerTarget.position.z);
+        if (playerTarget != null){
+            //establish the direction the cannon should turn to be facing the ray's hit
+            Vector3 dir = new Vector3(playerTarget.position.x, cannonAimer.position.y, playerTarget.position.z);
 
-        //GREEN Raycast is Pointing from camera plane to the mouse
-        Debug.DrawLine(firepoint.transform.position, playerTarget.transform.position, Color.red);
+            //GREEN Raycast is Pointing from camera plane to the mouse
+            Debug.DrawLine(firepoint.transform.position, playerTarget.transform.position, Color.red);
 
-        //Look in that direction!
-        rbTurret.transform.LookAt(dir);
+            //Look in that direction!
+            rbTurret.transform.LookAt(dir);
+        }
     }
     void Shoot()
     {
@@ -59,7 +61,7 @@ public class BossBehavior : MonoBehaviour
     }
     void AutoFire(float _coolDown)
     {
-        if (!fireAgain)
+        if (!fireAgain && playerTarget != null)
         {
             //GUN COOLDOWN
             shotTimer += Time.deltaTime;

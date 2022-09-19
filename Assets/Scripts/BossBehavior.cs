@@ -15,8 +15,11 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] Transform rightStopper;
     [SerializeField] Transform leftStopper;
 
-    bool movingLeft;
-    bool movingRight;
+    [SerializeField] Vector3 velocity = Vector3.zero;
+    [SerializeField] float smoothTime = 0.3f;
+
+    bool movingLeft = false;
+    bool movingRight = true;
 
     private void Update()
     {
@@ -30,10 +33,17 @@ public class BossBehavior : MonoBehaviour
     {
         TurnTurret();
 
-
         //below are methods that I will eventually move to a state-controlled system
-        MoveRight();
-        //MoveLeft();
+        if (movingRight == true)
+        {
+            MoveRight();
+        }
+        
+        if (movingLeft == true)
+        {
+            MoveLeft();
+        }
+        
     }
 
 
@@ -60,11 +70,31 @@ public class BossBehavior : MonoBehaviour
 
     void MoveRight()
     {
-        //Vector3.MoveTowards(gameObject.transform.position, rightStopper.position, Time.deltaTime);
-        transform.Translate(Vector3.MoveTowards(gameObject.transform.position, rightStopper.position, Time.deltaTime/5));
+
+        if (gameObject.transform.position.x <= 8f)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime *4);
+        }
+
+        else
+        {
+            movingRight = false;
+            movingLeft = true;
+        }
+
+        
     }
     void MoveLeft()
     {
-        transform.Translate(leftStopper.position * Time.deltaTime);
+        if (gameObject.transform.position.x >= -15f)
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * 4);
+        }
+
+        else
+        {
+            movingLeft = false;
+            movingRight = true; 
+        }
     }
 }

@@ -3182,9 +3182,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409725184}
-  m_LocalRotation: {x: -0, y: -0.99144506, z: -0, w: -0.13052495}
-  m_LocalPosition: {x: -4.0440454, y: 1.3449998, z: -2.789997}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: -0, y: -0.99144506, z: -0, w: -0.13052498}
+  m_LocalPosition: {x: -3.66, y: 1.3449998, z: -4.1900005}
+  m_LocalScale: {x: 1.9999996, y: 2, z: 1.9999996}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 578181340}
@@ -3258,6 +3258,8 @@ MonoBehaviour:
   firepoint: {fileID: 1498759242}
   rightStopper: {fileID: 1913616847}
   leftStopper: {fileID: 1966341707}
+  velocity: {x: 0, y: 0, z: 0}
+  smoothTime: 0.3
 --- !u!65 &409725192
 BoxCollider:
   m_ObjectHideFlags: 0

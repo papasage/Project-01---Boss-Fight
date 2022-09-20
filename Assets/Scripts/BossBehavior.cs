@@ -14,6 +14,7 @@ public class BossBehavior : MonoBehaviour
     // bools to check if the boss should be sliding left/right on the track
     [SerializeField] bool movingLeft = false;
     [SerializeField] bool movingRight = true;
+    [SerializeField] bool movingTracking = false;
 
     //variables that control the fire intervals
     float shotTimer = 0;
@@ -22,17 +23,30 @@ public class BossBehavior : MonoBehaviour
 
     private void Update()
     {
-        AutoFire(coolDownSeconds);
+        if (movingTracking == true)
+        {
+            AutoFire(coolDownSeconds*.2f);
+        }
+
+        else AutoFire(coolDownSeconds);
     }
 
     void FixedUpdate()
     {
         TurnTurret();
+
         //below are methods that I will eventually move to a state-controlled system
+
+        if (movingTracking == true)
+        {
+            MoveTrackPlayer();
+        }
+
         if (movingRight == true)
         {
             MoveRight();
-        }    
+        }
+
         if (movingLeft == true)
         {
             MoveLeft();
@@ -104,5 +118,12 @@ public class BossBehavior : MonoBehaviour
             movingLeft = false;
             movingRight = true; 
         }
+    }
+
+    void MoveTrackPlayer()
+    {
+        Debug.Log("PlayerX = " + playerTarget.position.x);
+        Vector3 playerTracking = new Vector3(playerTarget.position.x, transform.position.y, transform.position.z);
+        transform.position = playerTracking;
     }
 }

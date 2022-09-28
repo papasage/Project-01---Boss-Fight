@@ -16,12 +16,12 @@ public class particleExplostion : MonoBehaviour
     void LateUpdate()
     {
         timer++;
-        Debug.Log("Timer = " + timer);
+        //Debug.Log("Timer = " + timer);
 
         if (timer >= alarm)
         {
             Destroy(gameObject);
-       }
+        }
             
         
     }

@@ -17,6 +17,11 @@ public class TankController : MonoBehaviour
     bool fireAgain = false;
     [SerializeField] float coolDownSeconds = 1;
 
+    //camera shake connection
+    public CameraShake cameraShake;
+    [SerializeField] float cameraShakeDuration;
+    [SerializeField] float cameraShakeMagnitude;
+
     private void FixedUpdate()
     {
         MoveTank();
@@ -47,6 +52,7 @@ public class TankController : MonoBehaviour
     void Shoot()
     {
         Debug.Log("FIRE!");
+        StartCoroutine(cameraShake.Shake(cameraShakeDuration, cameraShakeMagnitude));
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
     }

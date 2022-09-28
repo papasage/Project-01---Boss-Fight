@@ -122,7 +122,7 @@ public class BossBehavior : MonoBehaviour
 
     void MoveTrackPlayer()
     {
-        Debug.Log("PlayerX = " + playerTarget.position.x);
+        //Debug.Log("PlayerX = " + playerTarget.position.x);
         Vector3 playerTracking = new Vector3(playerTarget.position.x, transform.position.y, transform.position.z);
         transform.position = playerTracking;
     }

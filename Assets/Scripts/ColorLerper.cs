@@ -40,7 +40,7 @@ public class ColorLerper : MonoBehaviour
             lm.material.color = targetColor;
         }
 
-        Debug.Log("lerp button pressed");
+        //Debug.Log("lerp button pressed");
         lerpTime = true;
     }
     void lerpArray()
@@ -50,7 +50,7 @@ public class ColorLerper : MonoBehaviour
         {
             //lerp back to starting colors
             float t = Mathf.Sin((Time.time * lerpSpeed));
-            Debug.Log("Material Lerp Progress = " + t);
+            //Debug.Log("Material Lerp Progress = " + t);
             lm.material.color = Color.Lerp(targetColor, lm.startColor, t);
 
             if (t >= tTarget)

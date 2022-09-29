@@ -10,6 +10,12 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] GameObject deathPrefabLocation;
     [SerializeField] ColorLerper damageColors;
 
+    //camera shake connection
+    public CameraShake cameraShake;
+    [SerializeField] float cameraShakeDuration;
+    [SerializeField] float cameraShakeMagnitude;
+
+
     public void takeDamage(int amount)
     {
         damageColors.setLerp();

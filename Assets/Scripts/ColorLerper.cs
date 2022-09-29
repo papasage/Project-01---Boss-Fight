@@ -11,11 +11,14 @@ public class ColorLerper : MonoBehaviour
     [SerializeField] bool lerpTime = false;
     [SerializeField] float tTarget;
 
+    Color testColor;
+
     private void Start()
     {
         foreach (LerpMaterial lm in materials)
         {
             //switch to the damage color instantly
+                                                                 //lm.material.SetColor("_Color", lm.startColor);
             lm.material.color = lm.startColor;
         }
     }
@@ -37,6 +40,7 @@ public class ColorLerper : MonoBehaviour
         foreach (LerpMaterial lm in materials)
         {
             //switch to the damage color instantly
+                                                                     //lm.material.SetColor("_Color",targetColor);
             lm.material.color = targetColor;
         }
 
@@ -51,10 +55,14 @@ public class ColorLerper : MonoBehaviour
             //lerp back to starting colors
             float t = Mathf.Sin((Time.time * lerpSpeed));
             //Debug.Log("Material Lerp Progress = " + t);
+            testColor = Color.Lerp(targetColor, lm.startColor, t);
+                                                                     //lm.material.SetColor("_Color", testColor);
             lm.material.color = Color.Lerp(targetColor, lm.startColor, t);
+
 
             if (t >= tTarget)
             {
+                                                                     //lm.material.SetColor("_Color", lm.startColor);
                 lm.material.color = lm.startColor;
                 lerpTime = false;
                 break;

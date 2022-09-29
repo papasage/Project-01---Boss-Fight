@@ -21,6 +21,9 @@ public class BossBehavior : MonoBehaviour
     bool fireAgain = false;
     [SerializeField] float coolDownSeconds = 1;
 
+    //hookup to see the BrotherDied event
+    [SerializeField] private Health _health;
+
     private void Update()
     {
         if (movingTracking == true)
@@ -126,4 +129,24 @@ public class BossBehavior : MonoBehaviour
         Vector3 playerTracking = new Vector3(playerTarget.position.x, transform.position.y, transform.position.z);
         transform.position = playerTracking;
     }
+
+    public void OnBrotherDied()
+    {
+        movingLeft = false;
+        movingRight = false;
+        movingTracking = true;
+    }
+
+
+    private void OnEnable()
+    {
+        _health.BrotherDied += OnBrotherDied;
+    }
+    private void OnDisable()
+    {
+        _health.BrotherDied -= OnBrotherDied;
+    }
+
+    // NOTES ON CONNECTING THE BOSSES
+      //I have created the event in Health for a brother dying, but I am invoking it on 
 }

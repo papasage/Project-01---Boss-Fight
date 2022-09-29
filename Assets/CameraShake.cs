@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    private float _mag;
+    private float _dur;
+    private Vector3 originalPos;
+
     public IEnumerator Shake (float duration, float magnitude)
     {
-        Vector3 originalPos = transform.localPosition;
+        //STORE THE LOCAL VARIABLES 
+        _dur = duration;
+        _mag = magnitude;
+        originalPos = transform.localPosition;
 
         float elapsed = 0.0f;
 
-        while (elapsed < duration)
+        while (elapsed < _dur)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+
+            if (_mag >= 0) { _mag -= 0.001f; }
+
+            float x = Random.Range(-1f, 1f) * _mag;
+            float y = Random.Range(-1f, 1f) * _mag;
 
             transform.localPosition = new Vector3(x, y,originalPos.z);
 
@@ -23,5 +33,21 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = originalPos;
+    }
+
+    public void recoil()
+    {
+        // small camera shake event for player gunfire
+        StartCoroutine(Shake(.15f, .25f));
+    }
+    public void flinch()
+    {
+        // medium camera shake event for player damage
+        StartCoroutine(Shake(.3f, .4f));
+    }
+    public void deathRattle()
+    {
+        // big camera shake event for death
+        StartCoroutine(Shake(2f, 3f));
     }
 }

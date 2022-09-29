@@ -51,8 +51,8 @@ public class TankController : MonoBehaviour
     }
     void Shoot()
     {
-        Debug.Log("FIRE!");
-        StartCoroutine(cameraShake.Shake(cameraShakeDuration, cameraShakeMagnitude));
+        //Debug.Log("FIRE!");
+        cameraShake.recoil();
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
     }

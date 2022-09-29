@@ -14,7 +14,7 @@ public class BulletBase : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Bullet Spawn!");
+        //Debug.Log("Bullet Spawn!");
         rb = GetComponent<Rigidbody>();
 
     }
@@ -32,7 +32,7 @@ public class BulletBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Bullet Collision!");
+        //Debug.Log("Bullet Collision!");
 
         //check if the collided object has a IDamageable component
         IDamageable damageable = col.GetComponent<IDamageable>();

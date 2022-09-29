@@ -53,7 +53,7 @@ public class AimTurret : MonoBehaviour
 
         if (Physics.Raycast(playerToMouse, out distanceCheckHit))
         {
-            adjustedCrosshairSpeed = crosshairSpeed - distanceCheckHit.distance;
+            adjustedCrosshairSpeed = Mathf.Log(crosshairSpeed - distanceCheckHit.distance);
             //set a visual object's transform to hit.point
             crosshair.transform.position = Vector3.MoveTowards(crosshair.transform.position, crossDir, adjustedCrosshairSpeed);
         }

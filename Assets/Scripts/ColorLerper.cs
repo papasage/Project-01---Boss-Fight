@@ -18,7 +18,9 @@ public class ColorLerper : MonoBehaviour
         foreach (LerpMaterial lm in materials)
         {
             //switch to the damage color instantly
-                                                                 //lm.material.SetColor("_Color", lm.startColor);
+            
+            //lm.material.SetColor("_Color", lm.startColor); - MIKEY
+            
             lm.material.color = lm.startColor;
         }
     }
@@ -40,8 +42,9 @@ public class ColorLerper : MonoBehaviour
         foreach (LerpMaterial lm in materials)
         {
             //switch to the damage color instantly
-                                                                     //lm.material.SetColor("_Color",targetColor);
             lm.material.color = targetColor;
+            
+            //lm.material.SetColor("_Color",targetColor); - MIKEY
         }
 
         //Debug.Log("lerp button pressed");
@@ -52,21 +55,26 @@ public class ColorLerper : MonoBehaviour
         float lastLerpStart = Time.time;
         foreach (LerpMaterial lm in materials)
         {
-            //lerp back to starting colors
+            //A timer that keeps track of the lerp
             float t = Mathf.Sin((Time.time * lerpSpeed));
+
             //Debug.Log("Material Lerp Progress = " + t);
-            testColor = Color.Lerp(targetColor, lm.startColor, t);
-                                                                     //lm.material.SetColor("_Color", testColor);
+            //testColor = Color.Lerp(targetColor, lm.startColor, t); - MIKEY
+            //lm.material.SetColor("_Color", testColor); - MIKEY
+
+            //lerp back to starting colors
             lm.material.color = Color.Lerp(targetColor, lm.startColor, t);
 
 
             if (t >= tTarget)
             {
-                                                                     //lm.material.SetColor("_Color", lm.startColor);
+                                                                                    //lm.material.SetColor("_Color", lm.startColor); - MIKEY
                 lm.material.color = lm.startColor;
                 lerpTime = false;
                 break;
             }
+
+
 
             //QUESTION FOR CHANDLER:
             //I think the way I am using t as a timer to determine where we are in the lerp is causing issues when I break the loop
@@ -77,6 +85,26 @@ public class ColorLerper : MonoBehaviour
 
             //i am exhausted 
         }
+    }
+
+
+
+    //CLEANUP CREW
+    // How can I refactor this to follow DRY?
+
+    private void OnDisable()
+    {
+        foreach (LerpMaterial lm in materials) { lm.material.color = lm.startColor; }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (LerpMaterial lm in materials) { lm.material.color = lm.startColor; }
+    }
+
+    private void OnApplicationQuit()
+    {
+        foreach (LerpMaterial lm in materials) { lm.material.color = lm.startColor; }
     }
 
 }

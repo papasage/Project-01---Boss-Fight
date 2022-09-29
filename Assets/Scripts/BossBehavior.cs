@@ -37,7 +37,7 @@ public class BossBehavior : MonoBehaviour
 
         //below are methods that I will eventually move to a state-controlled system
 
-        if (movingTracking == true)
+        if (movingTracking == true && playerTarget != null)
         {
             MoveTrackPlayer();
         }
@@ -69,7 +69,7 @@ public class BossBehavior : MonoBehaviour
     }
     void Shoot()
     {
-        Debug.Log("FIRE!");
+        //Debug.Log("FIRE!");
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
     }

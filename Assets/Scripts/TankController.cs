@@ -12,20 +12,40 @@ public class TankController : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject firepoint;
 
+    [SerializeField] Material bulletColor;
+    [SerializeField] Color normBulletColor;
+    [SerializeField] Color normBulletEmission;
+    [SerializeField] Color powerBulletColor;
+    [SerializeField] Color powerBulletEmission;
+
     //variables that control the fire intervals
     float shotTimer = 1;
     bool fireAgain = false;
     [SerializeField] float coolDownSeconds = 1;
+    [SerializeField] float coolDownSecondsPower = .3f;
 
     //camera shake connection
     public CameraShake cameraShake;
     [SerializeField] float cameraShakeDuration;
     [SerializeField] float cameraShakeMagnitude;
 
+    //music change connection for powerup
+    [SerializeField] MusicChanger _music;
+
+
+    private void Start()
+    {
+        bulletColor.SetColor("_Color", normBulletColor);
+        bulletColor.SetColor("_EmissionColor", normBulletEmission);
+    }
     private void FixedUpdate()
     {
         MoveTank();
         TurnTank();
+        if (Input.GetKey(KeyCode.P))
+        {
+            PowerUp(coolDownSecondsPower);
+        }
     }
 
     private void Update()
@@ -77,6 +97,36 @@ public class TankController : MonoBehaviour
             fireAgain = false;
         }
 
+    }
+
+    void PowerUp(float cooldownBuff)
+    {
+        coolDownSeconds = cooldownBuff;
+        bulletColor.SetColor("_Color", powerBulletColor);
+        bulletColor.SetColor("_EmissionColor", powerBulletEmission);
+        _music.Phase3();
+    }
+
+
+    //CLEANUP CREW
+    // How can I refactor this to follow DRY?
+
+    private void OnDisable()
+    {
+        bulletColor.SetColor("_Color", normBulletColor);
+        bulletColor.SetColor("_EmissionColor", normBulletEmission);
+    }
+
+    private void OnDestroy()
+    {
+        bulletColor.SetColor("_Color", normBulletColor);
+        bulletColor.SetColor("_EmissionColor", normBulletEmission);
+    }
+
+    private void OnApplicationQuit()
+    {
+        bulletColor.SetColor("_Color", normBulletColor);
+        bulletColor.SetColor("_EmissionColor", normBulletEmission);
     }
 
 }

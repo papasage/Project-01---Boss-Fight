@@ -24,7 +24,9 @@ public class Health : MonoBehaviour, IDamageable
 
     [SerializeField] bool isPlayer;
     [SerializeField] bool isBoss;
+    private bool isLastBoss = false;
     public event Action BrotherDied;
+    [SerializeField] Health _otherHealth;
     [SerializeField] PlayerHealthBar _playerHealthBar;
     public void takeDamage(int amount)
     {
@@ -53,7 +55,7 @@ public class Health : MonoBehaviour, IDamageable
         if (isPlayer == true) { cameraShake.deathRattle(); }
 
         //if this is the boss, invoke the BrotherDied event
-        if (isBoss == true) { BrotherDied.Invoke(); }
+        if (isBoss == true && isLastBoss == false) { BrotherDied.Invoke(); isLastBoss = true; }
 
         //empty the player's health bar
         if (isPlayer == true && _playerHealthBar != null) { _playerHealthBar.SetHealth(currentHealth); }
@@ -87,5 +89,15 @@ public class Health : MonoBehaviour, IDamageable
         //if (isPlayer == true && _playerHealthBar != null) { _playerHealthBar.SetHealth(currentHealth); }
 
         //The boss' health bar is consolidated in TwinBossHealth.cs. That is where the boss healthbar is controlled
+    }
+
+    private void OnEnable()
+    {
+        if (_otherHealth != null) { _otherHealth.BrotherDied += OnBrotherDied; }
+    }
+
+    void OnBrotherDied()
+    {
+        isLastBoss = true;
     }
 }

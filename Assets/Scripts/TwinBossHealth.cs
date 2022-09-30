@@ -11,6 +11,9 @@ public class TwinBossHealth : MonoBehaviour
     float twinHealthCurrent;
     float twinHealthMax;
     public BossHealthBar _bossHealthBar;
+    //music change connection for defeat theme
+    [SerializeField] MusicChanger _music;
+    [SerializeField] bool _endMusicPlaying = false;
 
     private void Start()
     {
@@ -22,6 +25,11 @@ public class TwinBossHealth : MonoBehaviour
     {
         CombineHealths();
         UpdateHealthUI();
+        if (twinHealthCurrent <= 0 && _endMusicPlaying == false)
+        {
+            _music.Phase4();
+            _endMusicPlaying = true;
+        }
     }
 
     void CombineHealths()

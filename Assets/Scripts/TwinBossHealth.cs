@@ -10,7 +10,13 @@ public class TwinBossHealth : MonoBehaviour
     [SerializeField] private Health _healthB;
     float twinHealthCurrent;
     float twinHealthMax;
-    
+    public BossHealthBar _bossHealthBar;
+
+    private void Start()
+    {
+        twinHealthMax = _healthA.maxHealth + _healthB.maxHealth;
+        _bossHealthBar.SetMaxHealth(twinHealthMax);
+    }
 
     void Update()
     {
@@ -21,16 +27,10 @@ public class TwinBossHealth : MonoBehaviour
     void CombineHealths()
     {
         twinHealthCurrent = _healthA.currentHealth + _healthB.currentHealth;
-        twinHealthMax = _healthA.maxHealth + _healthB.maxHealth;
     }
 
     void UpdateHealthUI()
     {
-        if (twinHealthCurrent <= 0)
-        {
-            hpCounter.text = "EXTERMINATED";
-        }
-
-        else hpCounter.text = "HP:" + twinHealthCurrent;
+        _bossHealthBar.SetHealth(twinHealthCurrent);
     }
 }

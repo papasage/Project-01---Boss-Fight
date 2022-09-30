@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Health : MonoBehaviour, IDamageable
@@ -24,6 +25,7 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] bool isPlayer;
     [SerializeField] bool isBoss;
     public event Action BrotherDied;
+    [SerializeField] PlayerHealthBar _playerHealthBar;
     public void takeDamage(int amount)
     {
         //Lerp Colors from red
@@ -34,6 +36,9 @@ public class Health : MonoBehaviour, IDamageable
 
         //subtract health
         currentHealth -= amount;
+
+        //Health update for Player only
+        if (isPlayer == true && _playerHealthBar != null) { _playerHealthBar.SetHealth(currentHealth); }
 
         //check if dead
         if (currentHealth <= 0)
@@ -49,6 +54,9 @@ public class Health : MonoBehaviour, IDamageable
 
         //if this is the boss, invoke the BrotherDied event
         if (isBoss == true) { BrotherDied.Invoke(); }
+
+        //empty the player's health bar
+        if (isPlayer == true && _playerHealthBar != null) { _playerHealthBar.SetHealth(currentHealth); }
 
         //Store this location for a particle object
         Vector3 currentLocation = gameObject.transform.position;
@@ -69,5 +77,15 @@ public class Health : MonoBehaviour, IDamageable
         //set "damage colors" to this objects instance of the color lerper script
         damageColors = GetComponent<ColorLerper>();
 
+        //Fill the player's health bar
+        if (isPlayer == true && _playerHealthBar != null) { _playerHealthBar.SetMaxHealth(maxHealth); }
+
+    }
+    private void Update()
+    {
+        //Update the player's health bar
+        //if (isPlayer == true && _playerHealthBar != null) { _playerHealthBar.SetHealth(currentHealth); }
+
+        //The boss' health bar is consolidated in TwinBossHealth.cs. That is where the boss healthbar is controlled
     }
 }

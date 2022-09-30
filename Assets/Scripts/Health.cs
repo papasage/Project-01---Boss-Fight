@@ -59,9 +59,6 @@ public class Health : MonoBehaviour, IDamageable
         //gonzo
         if (isPlayer == true) { Destroy(gameObject); }
         if (isBoss == true) { Destroy(gameObject); }
-        //if (isBoss == true) { BrotherDied.Invoke(); gameObject.transform.position = new Vector3(10000,10000,10000); }
-
-
     }
 
     void Start()

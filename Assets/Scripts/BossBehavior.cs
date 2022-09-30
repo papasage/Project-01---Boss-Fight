@@ -15,6 +15,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] bool movingLeft = false;
     [SerializeField] bool movingRight = true;
     [SerializeField] bool movingTracking = false;
+    [SerializeField] bool isEnraged = false;
 
     //variables that control the fire intervals
     float shotTimer = 0;
@@ -26,12 +27,15 @@ public class BossBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (movingTracking == true)
+        if (isEnraged == true)
         {
-            AutoFire(coolDownSeconds*.2f);
+            if(coolDownSeconds >= .2f) 
+            {
+            coolDownSeconds = Mathf.Lerp(coolDownSeconds, coolDownSeconds *.5f,   Time.deltaTime);
+            }
         }
 
-        else AutoFire(coolDownSeconds);
+        AutoFire(coolDownSeconds);
     }
 
     void FixedUpdate()
@@ -126,8 +130,8 @@ public class BossBehavior : MonoBehaviour
     void MoveTrackPlayer()
     {
         //Debug.Log("PlayerX = " + playerTarget.position.x);
-        Vector3 playerTracking = new Vector3(playerTarget.position.x, transform.position.y, transform.position.z);
-        transform.position = playerTracking;
+        //Vector3 playerTracking = new Vector3(playerTarget.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, playerTarget.position.x, Time.deltaTime), transform.position.y, transform.position.z) ;
     }
 
     public void OnBrotherDied()
@@ -135,18 +139,17 @@ public class BossBehavior : MonoBehaviour
         movingLeft = false;
         movingRight = false;
         movingTracking = true;
+        isEnraged = true;
     }
 
 
     private void OnEnable()
     {
-        _health.BrotherDied += OnBrotherDied;
+        if (_health != null) { _health.BrotherDied += OnBrotherDied;}
+        
     }
     private void OnDisable()
     {
-        _health.BrotherDied -= OnBrotherDied;
+        //if (_health != null) { _health.BrotherDied -= OnBrotherDied; }
     }
-
-    // NOTES ON CONNECTING THE BOSSES
-      //I have created the event in Health for a brother dying, but I am invoking it on 
 }

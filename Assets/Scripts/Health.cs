@@ -6,8 +6,8 @@ using System;
 public class Health : MonoBehaviour, IDamageable
 {
     [Header("Health Settings")]
-    [SerializeField] int maxHealth;
-    [SerializeField] int currentHealth;
+    [SerializeField] public int maxHealth;
+    [SerializeField] public int currentHealth;
 
     [Header("Damage Visuals")]
     [SerializeField] GameObject deathPrefab;

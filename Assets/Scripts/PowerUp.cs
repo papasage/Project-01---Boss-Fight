@@ -5,17 +5,30 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     Rigidbody _rb;
-    // Start is called before the first frame update
+    [SerializeField] Collider _playerCollider;
+    [SerializeField] TankController _player;
+    [SerializeField] float coolDownSecondsPower = 0.1f;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         // calculate rotation
         Quaternion turnOffset = Quaternion.Euler(1, 1, 1);
         _rb.MoveRotation(_rb.rotation * turnOffset);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other == _playerCollider)
+        {
+            _player.PowerUp(coolDownSecondsPower);
+            Destroy(gameObject);
+        }
+    }
+
 }

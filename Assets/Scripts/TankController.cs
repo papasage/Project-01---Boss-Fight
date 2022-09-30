@@ -23,6 +23,7 @@ public class TankController : MonoBehaviour
     bool fireAgain = false;
     [SerializeField] float coolDownSeconds = 1;
     [SerializeField] float coolDownSecondsPower = .3f;
+    [SerializeField] ParticleSystem powerParticle;
 
     //camera shake connection
     public CameraShake cameraShake;
@@ -31,6 +32,7 @@ public class TankController : MonoBehaviour
 
     //music change connection for powerup
     [SerializeField] MusicChanger _music;
+    [SerializeField] Light _spotlight;
 
 
     private void Start()
@@ -42,10 +44,6 @@ public class TankController : MonoBehaviour
     {
         MoveTank();
         TurnTank();
-        if (Input.GetKey(KeyCode.P))
-        {
-            PowerUp(coolDownSecondsPower);
-        }
     }
 
     private void Update()
@@ -99,12 +97,19 @@ public class TankController : MonoBehaviour
 
     }
 
-    void PowerUp(float cooldownBuff)
+   public void PowerUp(float cooldownBuff)
     {
         coolDownSeconds = cooldownBuff;
         bulletColor.SetColor("_Color", powerBulletColor);
         bulletColor.SetColor("_EmissionColor", powerBulletEmission);
+        powerParticle.Play();
         _music.Phase3();
+        int t = 0;
+        if (t <=60 )
+        {
+            t++;
+            _spotlight.intensity = Mathf.Lerp(_spotlight.intensity, _spotlight.intensity * 10, Time.deltaTime);
+        }
     }
 
 

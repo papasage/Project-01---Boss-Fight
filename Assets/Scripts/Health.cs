@@ -28,8 +28,14 @@ public class Health : MonoBehaviour, IDamageable
     public event Action BrotherDied;
     [SerializeField] Health _otherHealth;
     [SerializeField] PlayerHealthBar _playerHealthBar;
+
+    //Character Portrait Stuff
+    [SerializeField] CharacterPortraitController _portrait;
     public void takeDamage(int amount)
     {
+        //Set the portrait to damaged
+        _portrait.StartCoroutine("Hurt");
+
         //Lerp Colors from red
         damageColors.setLerp();
 
@@ -45,6 +51,10 @@ public class Health : MonoBehaviour, IDamageable
         //check if dead
         if (currentHealth <= 0)
         {
+            //Set the portrait to dead 
+            _portrait.isDead = true;
+
+            //die
             Kill();
         }
     }

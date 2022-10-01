@@ -34,6 +34,8 @@ public class TankController : MonoBehaviour
     [SerializeField] MusicChanger _music;
     [SerializeField] Light _spotlight;
 
+    //Character Portrait Stuff
+    [SerializeField] CharacterPortraitController _portrait;
 
     private void Start()
     {
@@ -70,6 +72,7 @@ public class TankController : MonoBehaviour
     void Shoot()
     {
         //Debug.Log("FIRE!");
+        _portrait.StartCoroutine("Firing");
         cameraShake.recoil();
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);

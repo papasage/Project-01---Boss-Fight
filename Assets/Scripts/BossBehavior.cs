@@ -29,6 +29,9 @@ public class BossBehavior : MonoBehaviour
     //camera shake connection
     public CameraShake cameraShake;
 
+    //Character Portrait Stuff
+    [SerializeField] CharacterPortraitController _portrait;
+
     private void Update()
     {
         if (isEnraged == true)
@@ -149,6 +152,7 @@ public class BossBehavior : MonoBehaviour
         movingRight = false;
         movingTracking = true;
         isEnraged = true;
+        _portrait.isEnraged = true;
     }
 
 

@@ -24,17 +24,19 @@ public class BossBehavior : MonoBehaviour
 
     //hookup to see the BrotherDied event
     [SerializeField] private Health _health;
-
     [SerializeField] Light _spotlight;
+
+    //camera shake connection
+    public CameraShake cameraShake;
 
     private void Update()
     {
         if (isEnraged == true)
         {
-            if(coolDownSeconds >= .2f) 
+            if(coolDownSeconds >= .15f) 
             {
              _spotlight.intensity = Mathf.Lerp(_spotlight.intensity, _spotlight.intensity * 2.2f, Time.deltaTime);
-            coolDownSeconds = Mathf.Lerp(coolDownSeconds, coolDownSeconds *.5f,   Time.deltaTime);
+            coolDownSeconds = Mathf.Lerp(coolDownSeconds, coolDownSeconds *.5f,   Time.deltaTime/1.5f);
             }
         }
 
@@ -97,6 +99,10 @@ public class BossBehavior : MonoBehaviour
                 Shoot();
                 shotTimer = 0;
                 fireAgain = false;
+                if (isEnraged)
+                {
+                    cameraShake.recoil();
+                }
             }
         }
     }

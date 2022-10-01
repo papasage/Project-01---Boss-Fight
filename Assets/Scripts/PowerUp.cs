@@ -7,7 +7,7 @@ public class PowerUp : MonoBehaviour
     Rigidbody _rb;
     [SerializeField] Collider _playerCollider;
     [SerializeField] TankController _player;
-    [SerializeField] float coolDownSecondsPower = 0.1f;
+    [SerializeField] float coolDownSecondsPower = 0.15f;
 
     void Start()
     {

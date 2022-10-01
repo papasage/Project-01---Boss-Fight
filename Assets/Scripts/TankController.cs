@@ -99,6 +99,7 @@ public class TankController : MonoBehaviour
 
    public void PowerUp(float cooldownBuff)
     {
+        FindObjectOfType<AudioManager>().Play("powerup");
         coolDownSeconds = cooldownBuff;
         bulletColor.SetColor("_Color", powerBulletColor);
         bulletColor.SetColor("_EmissionColor", powerBulletEmission);

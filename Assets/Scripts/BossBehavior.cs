@@ -85,6 +85,7 @@ public class BossBehavior : MonoBehaviour
     void Shoot()
     {
         //Debug.Log("FIRE!");
+        _portrait.StartCoroutine("Firing");
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
     }

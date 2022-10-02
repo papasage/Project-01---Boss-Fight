@@ -15373,10 +15373,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticLayer: {fileID: 1339090260}
-  _idle: {fileID: 21300000, guid: f37dfecd00417ae43b62f4bbbc29a174, type: 3}
-  _firing: {fileID: 21300000, guid: 2369c17809dbcc14f8b50e7c8fcebc43, type: 3}
-  _hurt: {fileID: 21300000, guid: f6b9aa904f48e604c8e2570500c7f526, type: 3}
-  _enraged: {fileID: 21300000, guid: 87455586fb9058947ac2a7cd4b7d1a7c, type: 3}
+  _idle: {fileID: 21300000, guid: 25ef41717923fcc48ac5089fbfdf7580, type: 3}
+  _firing: {fileID: 21300000, guid: a92fe2e76fb1fe9458cc532cf668cb58, type: 3}
+  _hurt: {fileID: 21300000, guid: fe2bc85c04d5ad84990e97031a50818e, type: 3}
+  _enraged: {fileID: 21300000, guid: a0ca0413124f66d44920738922e18305, type: 3}
   _dead: {fileID: 21300000, guid: d49d831bb968074439b221432f7fa71d, type: 3}
   isEnraged: 0
   isDead: 0
@@ -37400,7 +37400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.93706894, a: 0.34509805}
+  m_Color: {r: 1, g: 0, b: 0.93706894, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38994,7 +38994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.34509805}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -42864,10 +42864,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticLayer: {fileID: 1386551967}
-  _idle: {fileID: 21300000, guid: f37dfecd00417ae43b62f4bbbc29a174, type: 3}
-  _firing: {fileID: 21300000, guid: 2369c17809dbcc14f8b50e7c8fcebc43, type: 3}
-  _hurt: {fileID: 21300000, guid: f6b9aa904f48e604c8e2570500c7f526, type: 3}
-  _enraged: {fileID: 21300000, guid: 87455586fb9058947ac2a7cd4b7d1a7c, type: 3}
+  _idle: {fileID: 21300000, guid: fb1bd3c99e97acd4cbe122c4e3162fe2, type: 3}
+  _firing: {fileID: 21300000, guid: b21824d68623a3c46be54bdd71bf3ee4, type: 3}
+  _hurt: {fileID: 21300000, guid: 6d33108ef8b7c90449c7d298f3078b1f, type: 3}
+  _enraged: {fileID: 21300000, guid: b06a1974f68b25541a3774f75dcc5443, type: 3}
   _dead: {fileID: 21300000, guid: d49d831bb968074439b221432f7fa71d, type: 3}
   isEnraged: 0
   isDead: 0

@@ -37964,7 +37964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10528626, g: 0.9339623, b: 0, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40886,7 +40886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.12898159, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40924,9 +40924,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _staticLayer: {fileID: 1351294955}
-  _idle: {fileID: 21300000, guid: f37dfecd00417ae43b62f4bbbc29a174, type: 3}
-  _firing: {fileID: 21300000, guid: 2369c17809dbcc14f8b50e7c8fcebc43, type: 3}
-  _hurt: {fileID: 21300000, guid: f6b9aa904f48e604c8e2570500c7f526, type: 3}
+  _idle: {fileID: 21300000, guid: 99c93c6a62c7f914faaf3020fd6550c5, type: 3}
+  _firing: {fileID: 21300000, guid: aa96bcd55df51e74cb427438d4943449, type: 3}
+  _hurt: {fileID: 21300000, guid: 25db7c5523bdd644e9bb24826ba9d32b, type: 3}
   _enraged: {fileID: 0}
   _dead: {fileID: 21300000, guid: 9d50e9eefafcb4443a07258d562d817e, type: 3}
   isEnraged: 0

@@ -38,7 +38,7 @@ public class BossBehavior : MonoBehaviour
         {
             if(coolDownSeconds >= .15f) 
             {
-             _spotlight.intensity = Mathf.Lerp(_spotlight.intensity, _spotlight.intensity * 2.2f, Time.deltaTime);
+             _spotlight.intensity = Mathf.Lerp(_spotlight.intensity, _spotlight.intensity * 1.8f, Time.deltaTime);
             coolDownSeconds = Mathf.Lerp(coolDownSeconds, coolDownSeconds *.5f,   Time.deltaTime/1.5f);
             }
         }

@@ -13,6 +13,8 @@ public class Health : MonoBehaviour, IDamageable
     [Header("Damage Visuals")]
     [SerializeField] GameObject deathPrefab;
     [SerializeField] GameObject deathPrefabLocation;
+    [SerializeField] GameObject damagePrefab;
+    [SerializeField] GameObject damagePrefabLocation;
     [SerializeField] ColorLerper damageColors;
 
     [Header("Camera Shake Info")]
@@ -37,7 +39,10 @@ public class Health : MonoBehaviour, IDamageable
         _portrait.StartCoroutine("Hurt");
 
         //Lerp Colors from red
-        damageColors.setLerp();
+        damageColors.DamageFlash();
+
+        //play damage particle
+        Instantiate(damagePrefab, damagePrefabLocation.transform.position, Quaternion.identity);
 
         //CAMERA SHAKE FOR PLAYER ONLY
         if (isPlayer == true) { cameraShake.flinch(); }

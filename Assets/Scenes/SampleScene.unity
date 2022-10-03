@@ -8289,7 +8289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409725184}
   m_LocalRotation: {x: 0.5035216, y: 0.50352144, z: -0.4964536, w: 0.49645343}
-  m_LocalPosition: {x: -3.6, y: 3.08, z: 0.63}
+  m_LocalPosition: {x: -3.6, y: -8.32, z: 0.63}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8371,6 +8371,7 @@ MonoBehaviour:
   playerTarget: {fileID: 517264264}
   bullet: {fileID: 1704569031623580848, guid: 3cc9a38a1bb473842a9e6e592878ed45, type: 3}
   firepoint: {fileID: 1498759242}
+  movementSpeed: 3
   movingLeft: 0
   movingRight: 1
   movingTracking: 0
@@ -10811,7 +10812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514942042}
   m_LocalRotation: {x: 0.5035216, y: 0.50352144, z: -0.4964536, w: 0.49645343}
-  m_LocalPosition: {x: -3.6, y: -17.9, z: 0.63}
+  m_LocalPosition: {x: -3.6, y: -8.76, z: 0.63}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10893,6 +10894,7 @@ MonoBehaviour:
   playerTarget: {fileID: 517264264}
   bullet: {fileID: 1704569031623580848, guid: 537e09d1a2653394b89aaab5ece5041f, type: 3}
   firepoint: {fileID: 1514002919}
+  movementSpeed: 5.8
   movingLeft: 1
   movingRight: 0
   movingTracking: 0

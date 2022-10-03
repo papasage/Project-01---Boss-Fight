@@ -12,6 +12,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] GameObject firepoint; // Where those bullets instantiate from
 
     // bools to check if the boss should be sliding left/right on the track
+    [SerializeField] float movementSpeed = 4f;
     [SerializeField] bool movingLeft = false;
     [SerializeField] bool movingRight = true;
     [SerializeField] bool movingTracking = false;
@@ -115,7 +116,7 @@ public class BossBehavior : MonoBehaviour
 
         if (gameObject.transform.position.x <= 8f)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime *4);
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
         }
 
         else
@@ -130,7 +131,7 @@ public class BossBehavior : MonoBehaviour
     {
         if (gameObject.transform.position.x >= -15f)
         {
-            transform.Translate(Vector3.back * Time.deltaTime * 4);
+            transform.Translate(Vector3.back * Time.deltaTime * movementSpeed);
         }
 
         else

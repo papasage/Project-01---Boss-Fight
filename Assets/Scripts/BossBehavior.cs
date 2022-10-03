@@ -106,7 +106,7 @@ public class BossBehavior : MonoBehaviour
                 fireAgain = false;
                 if (isEnraged)
                 {
-                    cameraShake.recoil();
+                    cameraShake.rumble();
                 }
             }
         }

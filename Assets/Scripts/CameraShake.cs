@@ -35,10 +35,15 @@ public class CameraShake : MonoBehaviour
         transform.localPosition = originalPos;
     }
 
+    public void rumble()
+    {
+        //smallest camera shake event for boss enraged
+        StartCoroutine(Shake(.15f, .18f));
+    }
     public void recoil()
     {
         // small camera shake event for player gunfire
-        StartCoroutine(Shake(.15f, .25f));
+        StartCoroutine(Shake(.15f, .20f));
     }
     public void flinch()
     {

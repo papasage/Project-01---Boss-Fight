@@ -60,7 +60,7 @@ public class TankController : MonoBehaviour
         if (poweredUp == true)
         {
             _cannonSpotlight.color = Color.blue;
-            _cannonSpotlight.intensity = Mathf.Lerp(_cannonSpotlight.intensity, _cannonSpotlight.intensity * 1.1f, Time.deltaTime);
+            _cannonSpotlight.intensity = Mathf.Lerp(_cannonSpotlight.intensity, _cannonSpotlight.intensity + 9f, Time.deltaTime);
         }
     }
 

@@ -11,6 +11,9 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] public int currentHealth;
 
     [Header("Damage Visuals")]
+    [SerializeField] FlashImage flashImage;
+    [SerializeField] Color flashColor;
+
     [SerializeField] GameObject deathPrefab;
     [SerializeField] GameObject deathPrefabLocation;
     [SerializeField] GameObject damagePrefab;
@@ -44,8 +47,8 @@ public class Health : MonoBehaviour, IDamageable
         //play damage particle
         Instantiate(damagePrefab, damagePrefabLocation.transform.position, Quaternion.identity);
 
-        //CAMERA SHAKE FOR PLAYER ONLY
-        if (isPlayer == true) { cameraShake.flinch(); }
+        //CAMERA SHAKE + RED FLASH FOR PLAYER ONLY
+        if (isPlayer == true && flashImage != null) { cameraShake.flinch(); flashImage.StartFlash(.15f, 1f,flashColor); }
 
         //subtract health
         currentHealth -= amount;

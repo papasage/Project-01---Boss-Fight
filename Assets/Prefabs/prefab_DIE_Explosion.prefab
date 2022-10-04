@@ -4826,7 +4826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614808b69ee953e4ab1287e2be3f9e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarm: 1500
+  alarm: 1000
   soundFileName: boss_death
 --- !u!1 &7354928365593891568
 GameObject:

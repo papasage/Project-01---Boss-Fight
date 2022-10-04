@@ -17,6 +17,7 @@ public class TankController : MonoBehaviour
     [SerializeField] Color normBulletEmission;
     [SerializeField] Color powerBulletColor;
     [SerializeField] Color powerBulletEmission;
+    bool poweredUp = false;
 
     //variables that control the fire intervals
     float shotTimer = 1;
@@ -33,9 +34,13 @@ public class TankController : MonoBehaviour
     //music change connection for powerup
     [SerializeField] MusicChanger _music;
     [SerializeField] Light _spotlight;
+    [SerializeField] Light _cannonSpotlight;
 
     //Character Portrait Stuff
     [SerializeField] CharacterPortraitController _portrait;
+
+    //Cursor
+    [SerializeField] CursorManager _cursorManager;
 
     private void Start()
     {
@@ -51,6 +56,12 @@ public class TankController : MonoBehaviour
     private void Update()
     {
         AutoFire(coolDownSeconds);
+
+        if (poweredUp == true)
+        {
+            _cannonSpotlight.color = Color.blue;
+            _cannonSpotlight.intensity = Mathf.Lerp(_cannonSpotlight.intensity, _cannonSpotlight.intensity * 1.1f, Time.deltaTime);
+        }
     }
 
     public void MoveTank()
@@ -74,6 +85,7 @@ public class TankController : MonoBehaviour
         //Debug.Log("FIRE!");
         _portrait.StartCoroutine("Firing");
         cameraShake.recoil();
+        _cursorManager.cursorFeedback("Fire");
         FindObjectOfType<AudioManager>().Play("projectile_fire");
         Instantiate(bullet, firepoint.transform.position, firepoint.transform.rotation);
     }
@@ -102,6 +114,8 @@ public class TankController : MonoBehaviour
 
    public void PowerUp(float cooldownBuff)
     {
+        poweredUp = true;
+        _cursorManager.cursorFeedback("PoweredUp");
         FindObjectOfType<AudioManager>().Play("powerup");
         coolDownSeconds = cooldownBuff;
         bulletColor.SetColor("_Color", powerBulletColor);
